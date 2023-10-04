@@ -1,0 +1,60 @@
+nav {
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 50px;
+}
+
+nav ul li {
+    display:inline-block;
+    padding: 10px;
+}
+
+body {
+    background-image: url(/assets/images/spacex.jpg);
+    background-size: cover;
+    
+}
+
+.header {
+    width: 100%;
+    text-align: center;
+    padding-top: 200px;
+    padding-left: 300px;
+    font-size: 80px;
+    color: #fff;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+
+@-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e26919, 0 0 40px #e26919, 0 0 50px #e26919, 0 0 60px #e26919, 0 0 70px #e26919;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #aa0512, 0 0 40px #aa0512, 0 0 50px #aa0512, 0 0 60px #aa0512, 0 0 70px #aa0512, 0 0 80px #aa0512;
+    }
+  }
+
+.launches {
+    font-size: 1.5rem;
+    margin:20px 0;
+    padding-top: 100px;
+    color: #fff;
+}
+
+.launchcards {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.launchcards .card {
+    list-style: none;
+    color: #fff;
+    padding: 18px 16px;
+    border-radius: 5px;
+    background: #305c6e;
+}
