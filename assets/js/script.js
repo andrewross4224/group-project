@@ -12,7 +12,7 @@ function getLaunches() {
             return response.json();
         })
         .then(function (data) {
-            launchData = data
+            launchData = data;
             locationFilter();
         })
 }
@@ -21,11 +21,11 @@ function getWeather() {
     var weatherUrl = "http://api.weatherapi.com/v1/forecast.json?key=e0bee2c578604174b22235058230410&q=merritt island&days=5&aqi=no&alerts=no"
     fetch(weatherUrl)
         .then(function (response) {
-            console.log(response)
+            console.log(response);
             return response.json();
         })
         .then(function (data) {
-            weatherForcast = data
+            weatherForcast = data;
             console.log(weatherForcast);
         })
 }
@@ -39,6 +39,8 @@ function locationFilter() {
 console.log(kennedy)
 }
 
+// format for changing space api timing to whatever format we want
+// dayjs.utc(kennedy[1].net).format("MM-DD-YYYY hh:mm:ss")
 getWeather();
 // when the user clicks on launches nav link it will open a modal 
 // launches.addEventListener.click(function() {
