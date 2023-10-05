@@ -1,6 +1,8 @@
 var weatherForcast;
 var launchData;
 var kennedy = [];
+var ourLaunches =[];
+var currentTime = dayjs().format("MM-DD-YYYY hh:mm:ss");
 // function to pull launch data from space devs
 
 
@@ -36,8 +38,19 @@ function locationFilter() {
             kennedy.push(launchData.results[i]);
         }
     }
-console.log(kennedy)
+    timeCheck();
 }
+
+function timeCheck() {
+    for (i = 0; i < 10; i++) {
+        if (dayjs.utc(kennedy[i].net).format("MM-DD-YYYY hh:mm:ss") < currentTime) {
+            kennedy.splice(i, 1);
+        } else {
+            ourLaunches.push(kennedy[i]);
+        }
+    }
+}
+
 
 // format for changing space api timing to whatever format we want
 // dayjs.utc(kennedy[1].net).format("MM-DD-YYYY hh:mm:ss")
