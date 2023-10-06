@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <title>The Space Spot</title>
 </head>
@@ -11,35 +12,25 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li id="launches"><a href="#">Future Launches</a></li>
-                <li id="pastLaunchesModal"><a href="#">Past Launches</a></li>
+            <ul class="inline-flex mt-1">
+                <li> 
+                    <button type="button" class="px-4 py-2 text-lg font-medium text-white bg-cyan-700 border border-cyan-600 rounded-l-lg hover:bg-cyan-600">Upcoming Launches</button>
+                </li>
+                <li>
+                    <button type="button" class="px-4 py-2 text-lg font-medium text-white bg-cyan-700 border-t border-b border-cyan-600 hover:bg-cyan-600">Past Launches</button>
+                </li>
+                <li>
+                    <button type="button" class="px-4 py-2 text-lg font-medium text-white bg-cyan-700 border border-cyan-600 rounded-r-md hover:bg-cyan-600">Weather Forecast</button>
+                </li>
             </ul>
         </nav>
     </header>
     <div>
-        <nav>
-            <h2 class="header">The Space Spot</h2>
-            <ul>
-                <li>Upcoming Launches</li>
-                <li>Past Launch Footage</li>
-                <li>Weather Forecast</li>
-            </ul>
-        </nav>
+        <h2 class="header">The Space Spot</h2>
     </div>
     <div class="launches">
-        <h2>Upcoming Launches</h2>
+        <h2 class="text-4xl">Upcoming Launches</h2>
         <ul class="launchcards">
-            <li class="card">
-                <h3>Location</h3>
-                <h4>Date:</h4>
-                <h4>Time:</h4>
-            </li>
-            <li class="card">
-                <h3>Location</h3>
-                <h4>Date:</h4>
-                <h4>Time:</h4>
-            </li>
             <li class="card">
                 <h3>Location</h3>
                 <h4>Date:</h4>
@@ -57,7 +48,6 @@
             </li>
         </ul>
     </div>
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="https://unpkg.com/dayjs-plugin-utc"></script>
