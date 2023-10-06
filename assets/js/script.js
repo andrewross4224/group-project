@@ -1,7 +1,7 @@
-var weatherForcast;
+var weatherForecast;
 var launchData;
 var kennedy = [];
-var ourLaunches =[];
+var ourLaunches = [];
 var currentTime = dayjs().format("MM-DD-YYYY hh:mm:ss");
 // function to pull launch data from space devs
 
@@ -18,23 +18,21 @@ function getLaunches() {
             locationFilter();
         })
 }
-getLaunches();
+
 function getWeather() {
-    var weatherUrl = "http://api.weatherapi.com/v1/forecast.json?key=e0bee2c578604174b22235058230410&q=merritt island&days=5&aqi=no&alerts=no"
+    var weatherUrl = "http://api.weatherapi.com/v1/forecast.json?key=e0bee2c578604174b22235058230410&q=merritt island&days=14&aqi=no&alerts=no"
     fetch(weatherUrl)
         .then(function (response) {
-            console.log(response);
             return response.json();
         })
         .then(function (data) {
-            weatherForcast = data;
-            console.log(weatherForcast);
+            weatherForecast = data;
         })
 }
 
 function locationFilter() {
     for (i = 0; i < launchData.results.length; i++) {
-        if (launchData.results[i].pad.location.id === 12) {
+        if (launchData.results[i].pad.location.id === 12 || launchData.results[i].pad.location.id === 27) {
             kennedy.push(launchData.results[i]);
         }
     }
@@ -44,17 +42,29 @@ function locationFilter() {
 function timeCheck() {
     for (i = 0; i < 10; i++) {
         if (dayjs.utc(kennedy[i].net).format("MM-DD-YYYY hh:mm:ss") < currentTime) {
-            kennedy.splice(i, 1);
+            // broken
+            kennedy.splice(i, 0);
         } else {
             ourLaunches.push(kennedy[i]);
         }
     }
+    launchWeather();
 }
 
-
-// format for changing space api timing to whatever format we want
-// dayjs.utc(kennedy[1].net).format("MM-DD-YYYY hh:mm:ss")
+function launchWeather() {
+    for (i = 0; i < ourLaunches.length; i++) {
+        var current = dayjs.utc(ourLaunches[i].window_start).format("MM-DD-YYYY hh:mm")
+        for (j = 0; j < 14; j++) {
+            for (k = 0; k < 24; k++) {
+                if (dayjs(weatherForecast.forecast.forecastday[j].hour[k].time).utc().format("MM-DD-YYYY hh:mm") === current) {
+                    console.log(weatherForecast.forecast.forecastday[j].hour[k].time);
+                }
+            }
+        }
+    }
+}
 getWeather();
+getLaunches();
 // when the user clicks on launches nav link it will open a modal 
 // launches.addEventListener.click(function() {
 //     console.log(123)
