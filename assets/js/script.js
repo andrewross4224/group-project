@@ -5,16 +5,17 @@ var weatherHour;
 var kennedy = [];
 var ourLaunches = [];
 var currentTime = dayjs().format("MM-DD-YYYY hh:mm:ss");
+var index = 0
 // function to pull launch data from space devs
 var launches = document.getElementById("launches");
 // get card classes to post data to page
-var location =  document.getElementsByClassName("location")
+var spacecenter =  document.getElementsByClassName("spacecenter")
 var date = document.getElementsByClassName('date')
 var time = document.getElementsByClassName('time')
 // fetch for launch data
 
 function getLaunches() {
-    var launchUrl = 'https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=100&lsp__name=Spacex'
+    var launchUrl = 'https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=100&lsp__name=Spacex'
     fetch(launchUrl)
         .then(function (response) {
             return response.json();
@@ -80,7 +81,11 @@ function weatherCheck() {
 
 function printtoPage() {
     // append()
-    console.log(weatherHour)
+    console.log(weatherHour);
+    spacecenter[index].textContent = ourLaunches[index].pad.name;
+    date[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("YYYY-MM-DD")
+    time[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("h:mm a")
+    index +=1
 }
 
 // init page by running functions can be changed to buttons later
