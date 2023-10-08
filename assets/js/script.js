@@ -16,7 +16,7 @@ var time = document.getElementsByClassName('time')
 // fetch for launch data
 
 function getLaunches() {
-    var launchUrl = 'https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=100&lsp__name=Spacex'
+    var launchUrl = 'https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=100&lsp__name=Spacex'
     fetch(launchUrl)
         .then(function (response) {
             return response.json();
@@ -82,7 +82,7 @@ function weatherCheck() {
 function printtoPage() {
     // append()
     spacecenter[index].textContent = ourLaunches[index].pad.name;
-    date[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("YYYY-MM-DD");
+    date[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("dddd MMM D, YYYY");
     time[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("h:mm a");
     index +=1;
 }
