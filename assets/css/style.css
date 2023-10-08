@@ -58,3 +58,10 @@ body {
     background: #305c6e;
     opacity: .4;
 }
+
+.pastlaunch {
+    font-size: 1.5rem;
+    margin:20px;
+    padding-top: 100px;
+    color:#fff
+}
