@@ -1,12 +1,18 @@
 // empty global variables to make data accessable to all functions
 var weatherForecast;
 var launchData;
+var weatherHour;
 var kennedy = [];
 var ourLaunches = [];
 var currentTime = dayjs().format("MM-DD-YYYY hh:mm:ss");
 // function to pull launch data from space devs
 var launches = document.getElementById("launches");
+// get card classes to post data to page
+var location =  document.getElementsByClassName("location")
+var date = document.getElementsByClassName('date')
+var time = document.getElementsByClassName('time')
 // fetch for launch data
+
 function getLaunches() {
     var launchUrl = 'https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=100&lsp__name=Spacex'
     fetch(launchUrl)
@@ -63,12 +69,18 @@ function weatherCheck() {
                 for (k = 0; k < 24; k++) {
                     if(weatherCheck.hour[k].time === launchHour){
                         // what data do we want from the weather at that time
-                        console.log(weatherCheck.hour[k].vis_miles);
+                        weatherHour = weatherCheck.hour[k]
+                        printtoPage()
                     }
                 }
             }
         }
     }
+}
+
+function printtoPage() {
+    // append()
+    console.log(weatherHour)
 }
 
 // init page by running functions can be changed to buttons later
