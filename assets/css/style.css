@@ -18,6 +18,7 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .header {
@@ -43,8 +44,8 @@ html {
 
 .launches {
     font-size: 1.5rem;
-    margin: 20px;
-    padding-top: 100px;
+    margin:20px;
+    padding-top: 50px;
     color: #fff;
 }
 
@@ -57,13 +58,12 @@ html {
 
 .launchcards .card {
     list-style: none;
+    padding-top: 25px; 
     color: #fff;
-    padding: 70px 68px;
     border-radius: 5px;
     background: #305c6e;
     opacity: .4;
 }
-
 .pastlaunch {
     font-size: 1.5rem;
     margin:20px;
