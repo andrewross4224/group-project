@@ -70,3 +70,14 @@ html {
     padding-top: 100px;
     color:#fff
 }
+
+.pastlaunchcards {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 25px;
+}
+
+.pastlaunchcards .pcard {
+    
+}
