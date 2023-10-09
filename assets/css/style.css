@@ -66,7 +66,23 @@ html {
 }
 .pastlaunch {
     font-size: 1.5rem;
-    margin:20px;
+    margin: 20px;
     padding-top: 100px;
     color:#fff
+}
+
+.pastlaunchcards {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 25px;
+}
+
+.pastlaunchcards .pcard {
+    list-style: none;
+    color: #fff;
+    padding: 70px 68px;
+    border-radius: 5px;
+    background: #305c6e;
+    opacity: .4;
 }
