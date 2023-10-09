@@ -10,6 +10,7 @@ var index = 0
 // function to pull launch data from space devs
 var launches = document.getElementById("launches");
 // get card classes to post data to page
+var images = document.getElementsByClassName('card-img')
 var spacecenter =  document.getElementsByClassName("spacecenter")
 var date = document.getElementsByClassName('date')
 var time = document.getElementsByClassName('time')
@@ -63,13 +64,12 @@ function weatherCheck() {
     for (i = 0; i < ourLaunches.length; i++) {
         var launchDay = dayjs(ourLaunches[i].window_start).utc().utcOffset(-4).format("YYYY-MM-DD");
         var launchHour = dayjs(ourLaunches[i].window_start).utc().utcOffset(-4).format("YYYY-MM-DD HH:00");
-        for (j = 0; j < 14; j++) {
+        for (j = 0; j < 13; j++) {
             if (weatherForecast.forecast.forecastday[j].date === launchDay) {
-                launchForcast = weatherForecast.forecast.forecastday[j]
-                for (k = 0; k < 24; k++) {
-                    if(launchForcast.hour[k].time === launchHour){
-                        threeHour = [launchForcast.hour[k],launchForcast.hour[k+1],launchForcast.hour[k+2]]
-                        // what data do we want from the weather at that time
+                launchForecast = weatherForecast.forecast.forecastday[j];
+                for (k = 0; k < 23; k++) {
+                    if(launchForecast.hour[k].time === launchHour){
+                        threeHour = [launchForecast.hour[k],launchForecast.hour[k+1],launchForecast.hour[k+2]];
                         printtoPage();
                         weatherClip();
                     }
@@ -80,7 +80,7 @@ function weatherCheck() {
 }
 // function to set text content of cards to rocket launchpad and date
 function printtoPage() {
-    // append()
+    images[index].src = ourLaunches[index].image;
     spacecenter[index].textContent = ourLaunches[index].pad.name;
     date[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("dddd MMM D, YYYY");
     time[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("h:mm a");
@@ -90,9 +90,9 @@ function printtoPage() {
 function weatherClip() {
     console.log(threeHour);
     for(m=0;m<threeHour.length;m++) {
-        console.log(threeHour[m].chance_of_rain)
-        console.log(threeHour[m].gust_mph)
-        console.log(threeHour[m].cloud)
+        console.log(threeHour[m].chance_of_rain);
+        console.log(threeHour[m].gust_mph);
+        console.log(threeHour[m].cloud);
     }
 }
 // init page by running functions can be changed to buttons later
