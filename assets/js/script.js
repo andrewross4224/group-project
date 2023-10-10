@@ -7,7 +7,6 @@ var weatherHour = [];
 var kennedy = [];
 var ourLaunches = [];
 var ourPreviousLaunches = [];
-var forecast;
 var threeHourChance;
 var threeHourGust;
 var threeHourClouds;
@@ -130,6 +129,7 @@ function weatherClip() {
 // init page by running functions can be changed to buttons later
 getWeather();
 getLaunches();
+previousLaunches();
 
 // show forecast data for specific launch window
 function showDialog() {
