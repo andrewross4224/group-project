@@ -2,9 +2,11 @@
 var threeHour;
 var weatherForecast;
 var launchData;
+var previousLaunchData;
 var weatherHour = [];
 var kennedy = [];
 var ourLaunches = [];
+var ourPreviousLaunches = [];
 var currentTime = dayjs().format("MM-DD-YYYY hh:mm:ss");
 var index = 0
 // function to pull launch data from space devs
@@ -14,8 +16,8 @@ var images = document.getElementsByClassName('card-img')
 var spacecenter =  document.getElementsByClassName("spacecenter")
 var date = document.getElementsByClassName('date')
 var time = document.getElementsByClassName('time')
-// fetch for launch data
 
+// fetch for launch data
 function getLaunches() {
     var launchUrl = 'https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=100&lsp__name=Spacex'
     fetch(launchUrl)
@@ -25,6 +27,19 @@ function getLaunches() {
         .then(function (data) {
             launchData = data;
             locationFilter();
+        })
+}
+// fetch for past launches
+function previousLaunches() {
+    var previousUrl = 'https://lldev.thespacedevs.com/2.2.0/launch/previous/?limit=100&lsp__name=Spacex'
+    fetch(previousUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            previousLaunchData = data;
+            console.log(previousLaunchData)
+            previousFilter();
         })
 }
 // fetch for weather forcast
@@ -46,6 +61,14 @@ function locationFilter() {
         }
     }
     timeCheck();
+}
+// filter to only get launches from kennedy that were successful
+function previousFilter() {
+    for (m = 0; m < previousLaunchData.results.length; m++) {
+        if (previousLaunchData.results[m].status.id === 3 && previousLaunchData.results[m].pad.location.id === 12 || previousLaunchData.results[m].pad.location.id === 27) {
+            ourPreviousLaunches.push(previousLaunchData.results[m]);
+        }
+    }
 }
 // broken time check function need to revisit
 function timeCheck() {
@@ -88,7 +111,6 @@ function printtoPage() {
 }
 
 function weatherClip() {
-    console.log(threeHour);
     for(m=0;m<threeHour.length;m++) {
         console.log(threeHour[m].chance_of_rain);
         console.log(threeHour[m].gust_mph);
@@ -98,3 +120,4 @@ function weatherClip() {
 // init page by running functions can be changed to buttons later
 getWeather();
 getLaunches();
+previousLaunches();
