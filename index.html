@@ -39,7 +39,7 @@
                       <h5 class="time mb-2 block font-sans text-xl font-semibold text-white">Time:</h5>
                     </div>
                     <div class="p-6 pt-0">
-                      <button class="py-3 px-6 rounded-lg bg-cyan-600 text-center text-xs font-bold uppercase text-white shadow-md shadow-cyan-800/20 transition-all hover:shadow-lg hover:shadow-cyan-800/40" type="button" onclick="showDialog()">Launch Forecast</button>
+                      <button class="py-3 px-6 rounded-lg bg-cyan-600 text-center text-xs font-bold uppercase text-white shadow-md shadow-cyan-800/20 transition-all hover:shadow-lg hover:shadow-cyan-800/40" type="button" onclick="showDialog();">Launch Forecast</button>
                     </div>
                 </div>
             </li>
@@ -54,7 +54,7 @@
                       <h5 class="time mb-2 block font-sans text-xl font-semibold text-white">Time:</h5>
                     </div>
                     <div class="p-6 pt-0">
-                      <button class="py-3 px-6 rounded-lg bg-cyan-600 text-center text-xs font-bold uppercase text-white shadow-md shadow-cyan-800/20 transition-all hover:shadow-lg hover:shadow-cyan-800/40" type="button" onclick="showDialog()">Launch Forecast</button>
+                      <button class="py-3 px-6 rounded-lg bg-cyan-600 text-center text-xs font-bold uppercase text-white shadow-md shadow-cyan-800/20 transition-all hover:shadow-lg hover:shadow-cyan-800/40" type="button" onclick="showDialog();">Launch Forecast</button>
                     </div>
                 </div>
             </li>
@@ -69,7 +69,7 @@
                       <h5 class="time mb-2 block font-sans text-xl font-semibold text-white">Time:</h5>
                     </div>
                     <div class="p-6 pt-0">
-                      <button class="py-3 px-6 rounded-lg bg-cyan-600 text-center text-xs font-bold uppercase text-white shadow-md shadow-cyan-800/20 transition-all hover:shadow-lg hover:shadow-cyan-800/40" type="button" onclick="showDialog()">Launch Forecast</button>
+                      <button class="py-3 px-6 rounded-lg bg-cyan-600 text-center text-xs font-bold uppercase text-white shadow-md shadow-cyan-800/20 transition-all hover:shadow-lg hover:shadow-cyan-800/40" type="button" onclick="showDialog();">Launch Forecast</button>
                     </div>
                     <!--Modal-->
                     <div id="dialog" class="fixed left-0 top-0 bg-black bg-opacity-50 hidden w-screen h-screen" onclick="hideDialog()">
@@ -80,8 +80,13 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
                                       </svg>                                
                                 </div>
-                                <div>
+                                <div id="modal">
+                                    <!-- <p>test</p> -->
                                     <h1 class="font-bold text-lg mb-2 text-white">Launch Forecast</h1>
+                                    <h5 id="chanceDialog"></h5>
+                                    <h5 id="windDialog"></h5>
+                                    <h5 id="cloudDialog"></h5>
+                                    <h5 id="visDialog"></h5>
                                 </div>
                             </div>
                             <div class="flex justify-end gap-4 mt-5">
