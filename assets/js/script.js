@@ -13,6 +13,8 @@ var threeHourClouds;
 var threeHourVis;
 var currentTime = dayjs().format("MM-DD-YYYY hh:mm:ss");
 var index = 0
+// loader element
+var loader = document.getElementById("loader")
 // function to pull launch data from space devs
 var launches = document.getElementById("launches");
 // get card classes to post data to page
@@ -113,6 +115,7 @@ function printtoPage() {
     date[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("dddd MMM D, YYYY");
     time[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("h:mm a");
     index += 1;
+    loader.style.display = "none";
 }
 // get three hour window of forecast data 
 function weatherClip() {
