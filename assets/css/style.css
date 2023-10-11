@@ -63,10 +63,7 @@ img {
 .launchcards .card {
     list-style: none;
     padding-top: 25px; 
-    color: #fff;
-    border-radius: 5px;
-    background: #305c6e;
-    opacity: .4;
+
 }
 .pastlaunch {
     font-size: 1.5rem;
