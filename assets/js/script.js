@@ -7,10 +7,10 @@ var weatherHour = [];
 var kennedy = [];
 var ourLaunches = [];
 var ourPreviousLaunches = [];
-var threeHourChance;
-var threeHourGust;
-var threeHourClouds;
-var threeHourVis;
+var threeHourChance = [];
+var threeHourGust = [];
+var threeHourClouds = [];
+var threeHourVis = [];
 var currentTime = dayjs().format("MM-DD-YYYY hh:mm:ss");
 var index = 0
 // loader element
@@ -23,6 +23,9 @@ var spacecenter = document.getElementsByClassName("spacecenter")
 var date = document.getElementsByClassName('date')
 var time = document.getElementsByClassName('time')
 // get modal to append forecast data
+var button1 = $('#button1')
+var button2 = $('#button2')
+var button3 = $('#button3')
 var dialog = $('#dialog')
 // fetch for launch data
 function getLaunches() {
@@ -120,35 +123,34 @@ function printtoPage() {
 // get three hour window of forecast data 
 function weatherClip() {
     for (m = 0; m < threeHour.length; m++) {
-        threeHourChance = threeHour[m].chance_of_rain
-        threeHourGust = threeHour[m].gust_mph
-        threeHourClouds = threeHour[m].cloud
-        threeHourVis = threeHour[m].vis_miles
-        console.log(threeHour[m].chance_of_rain)
-        console.log(threeHour[m].gust_mph)
-        console.log(threeHour[m].cloud)
+        threeHourChance.push(threeHour[m].chance_of_rain)
+        threeHourGust.push(threeHour[m].gust_mph)
+        threeHourClouds.push(threeHour[m].cloud)
+        threeHourVis.push(threeHour[m].vis_miles)
     }
 }
-// init page by running functions can be changed to buttons later
-getWeather();
-getLaunches();
-previousLaunches();
+function test() {
+    console.log(threeHourChance)
+    console.log(threeHourGust)
+    console.log(threeHourClouds)
+    console.log(threeHourVis)
+}
 
 // show forecast data for specific launch window in modal
 function showDialog() {
     let dialog = document.getElementById('dialog');
-        dialog.classList.remove('hidden');
-        setTimeout(() => {
-            dialog.classList.remove('opacity-0');
-        }, 20);
+    dialog.classList.remove('hidden');
+    setTimeout(() => {
+        dialog.classList.remove('opacity-0');
+    }, 20);
     $("#chanceDialog").text("Chance of rain:")
     $("#windDialog").text("Gust Speed:")
     $("#cloudDialog").text("Cloud Coverage:")
     $("#visDialog").text("Visibility:")
-    $("#chanceDialog").append(" " + threeHourChance + "%")
-    $("#windDialog").append(" " + threeHourGust + "mph")
-    $("#cloudDialog").append(" " + threeHourClouds)
-    $("#visDialog").append(" " + threeHourVis + "mi")
+    $("#chanceDialog").append("%")
+    $("#windDialog").append("mph")
+    $("#cloudDialog").append(" ")
+    $("#visDialog").append("mi")
 }
 // hide the dialog box when go back is clicked
 function hideDialog() {
@@ -158,3 +160,14 @@ function hideDialog() {
         dialog.classList.add('hidden');
     }, 500);
 }
+
+button1.on('click', function(){
+    $("#chanceDialog").text("Chance of rain: " + )
+    $("#windDialog").text("Gust Speed:")
+    $("#cloudDialog").text("Cloud Coverage:")
+    $("#visDialog").text("Visibility:")
+})
+// init page by running functions can be changed to buttons later
+getWeather();
+getLaunches();
+previousLaunches();
