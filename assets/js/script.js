@@ -7,16 +7,21 @@ var weatherHour = [];
 var kennedy = [];
 var ourLaunches = [];
 var ourPreviousLaunches = [];
+var threeHourChance;
+var threeHourGust;
+var threeHourClouds;
+var threeHourVis;
 var currentTime = dayjs().format("MM-DD-YYYY hh:mm:ss");
 var index = 0
 // function to pull launch data from space devs
 var launches = document.getElementById("launches");
 // get card classes to post data to page
 var images = document.getElementsByClassName('card-img')
-var spacecenter =  document.getElementsByClassName("spacecenter")
+var spacecenter = document.getElementsByClassName("spacecenter")
 var date = document.getElementsByClassName('date')
 var time = document.getElementsByClassName('time')
-
+// get modal to append forecast data
+var dialog = $('#dialog')
 // fetch for launch data
 function getLaunches() {
     var launchUrl = 'https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=100&lsp__name=Spacex'
@@ -91,8 +96,8 @@ function weatherCheck() {
             if (weatherForecast.forecast.forecastday[j].date === launchDay) {
                 launchForecast = weatherForecast.forecast.forecastday[j];
                 for (k = 0; k < 23; k++) {
-                    if(launchForecast.hour[k].time === launchHour){
-                        threeHour = [launchForecast.hour[k],launchForecast.hour[k+1],launchForecast.hour[k+2]];
+                    if (launchForecast.hour[k].time === launchHour) {
+                        threeHour = [launchForecast.hour[k], launchForecast.hour[k + 1], launchForecast.hour[k + 2]];
                         printtoPage();
                         weatherClip();
                     }
@@ -107,17 +112,38 @@ function printtoPage() {
     spacecenter[index].textContent = ourLaunches[index].pad.name;
     date[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("dddd MMM D, YYYY");
     time[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("h:mm a");
-    index +=1;
+    index += 1;
 }
-
+// get three hour window of forecast data 
 function weatherClip() {
-    for(m=0;m<threeHour.length;m++) {
-        console.log(threeHour[m].chance_of_rain);
-        console.log(threeHour[m].gust_mph);
-        console.log(threeHour[m].cloud);
+    for (m = 0; m < threeHour.length; m++) {
+        threeHourChance = threeHour[m].chance_of_rain
+        threeHourGust = threeHour[m].gust_mph
+        threeHourClouds = threeHour[m].cloud
+        threeHourVis = threeHour[m].vis_miles
+        console.log(threeHour[m].chance_of_rain)
+        console.log(threeHour[m].gust_mph)
+        console.log(threeHour[m].cloud)
     }
 }
 // init page by running functions can be changed to buttons later
 getWeather();
 getLaunches();
 previousLaunches();
+
+// show forecast data for specific launch window in modal
+function showDialog() {
+    dialog.show()
+    $("#chanceDialog").text("Chance of rain:")
+    $("#windDialog").text("Gust Speed:")
+    $("#cloudDialog").text("Cloud Coverage:")
+    $("#visDialog").text("Visibility:")
+    $("#chanceDialog").append(" " + threeHourChance + "%")
+    $("#windDialog").append(" " + threeHourGust + "mph")
+    $("#cloudDialog").append(" " + threeHourClouds)
+    $("#visDialog").append(" " + threeHourVis + "mi")
+}
+// hide the dialog box when go back is clicked
+function hideDialog() {
+    dialog.hide();
+}
