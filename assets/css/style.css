@@ -82,7 +82,6 @@ footer {
 
 footer p {
     color:#fff;
-
 }
 
 #loader {
@@ -94,7 +93,7 @@ footer p {
     height: 200px;
     animation: spin 2s linear infinite;
     position: relative;
-    margin-top: -450px;
+    margin-top: -830px;
 }
 
 @keyframes spin {
