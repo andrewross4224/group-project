@@ -2,19 +2,29 @@
 var threeHour;
 var weatherForecast;
 var launchData;
+var previousLaunchData;
 var weatherHour = [];
 var kennedy = [];
 var ourLaunches = [];
+var ourPreviousLaunches = [];
+var threeHourChance;
+var threeHourGust;
+var threeHourClouds;
+var threeHourVis;
 var currentTime = dayjs().format("MM-DD-YYYY hh:mm:ss");
 var index = 0
+// loader element
+var loader = document.getElementById("loader")
 // function to pull launch data from space devs
 var launches = document.getElementById("launches");
 // get card classes to post data to page
-var spacecenter =  document.getElementsByClassName("spacecenter")
+var images = document.getElementsByClassName('card-img')
+var spacecenter = document.getElementsByClassName("spacecenter")
 var date = document.getElementsByClassName('date')
 var time = document.getElementsByClassName('time')
+// get modal to append forecast data
+var dialog = $('#dialog')
 // fetch for launch data
-
 function getLaunches() {
     var launchUrl = 'https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=100&lsp__name=Spacex'
     fetch(launchUrl)
@@ -24,6 +34,19 @@ function getLaunches() {
         .then(function (data) {
             launchData = data;
             locationFilter();
+        })
+}
+// fetch for past launches
+function previousLaunches() {
+    var previousUrl = 'https://lldev.thespacedevs.com/2.2.0/launch/previous/?limit=100&lsp__name=Spacex'
+    fetch(previousUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            previousLaunchData = data;
+            console.log(previousLaunchData)
+            previousFilter();
         })
 }
 // fetch for weather forcast
@@ -46,6 +69,14 @@ function locationFilter() {
     }
     timeCheck();
 }
+// filter to only get launches from kennedy that were successful
+function previousFilter() {
+    for (m = 0; m < previousLaunchData.results.length; m++) {
+        if (previousLaunchData.results[m].status.id === 3 && previousLaunchData.results[m].pad.location.id === 12 || previousLaunchData.results[m].pad.location.id === 27) {
+            ourPreviousLaunches.push(previousLaunchData.results[m]);
+        }
+    }
+}
 // broken time check function need to revisit
 function timeCheck() {
     for (i = 0; i < 10; i++) {
@@ -63,13 +94,12 @@ function weatherCheck() {
     for (i = 0; i < ourLaunches.length; i++) {
         var launchDay = dayjs(ourLaunches[i].window_start).utc().utcOffset(-4).format("YYYY-MM-DD");
         var launchHour = dayjs(ourLaunches[i].window_start).utc().utcOffset(-4).format("YYYY-MM-DD HH:00");
-        for (j = 0; j < 14; j++) {
+        for (j = 0; j < 13; j++) {
             if (weatherForecast.forecast.forecastday[j].date === launchDay) {
-                launchForcast = weatherForecast.forecast.forecastday[j]
-                for (k = 0; k < 24; k++) {
-                    if(launchForcast.hour[k].time === launchHour){
-                        threeHour = [launchForcast.hour[k],launchForcast.hour[k+1],launchForcast.hour[k+2]]
-                        // what data do we want from the weather at that time
+                launchForecast = weatherForecast.forecast.forecastday[j];
+                for (k = 0; k < 23; k++) {
+                    if (launchForecast.hour[k].time === launchHour) {
+                        threeHour = [launchForecast.hour[k], launchForecast.hour[k + 1], launchForecast.hour[k + 2]];
                         printtoPage();
                         weatherClip();
                     }
@@ -80,16 +110,20 @@ function weatherCheck() {
 }
 // function to set text content of cards to rocket launchpad and date
 function printtoPage() {
-    // append()
+    images[index].src = ourLaunches[index].image;
     spacecenter[index].textContent = ourLaunches[index].pad.name;
     date[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("dddd MMM D, YYYY");
     time[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("h:mm a");
-    index +=1;
+    index += 1;
+    loader.style.display = "none";
 }
-
+// get three hour window of forecast data 
 function weatherClip() {
-    console.log(threeHour);
-    for(m=0;m<threeHour.length;m++) {
+    for (m = 0; m < threeHour.length; m++) {
+        threeHourChance = threeHour[m].chance_of_rain
+        threeHourGust = threeHour[m].gust_mph
+        threeHourClouds = threeHour[m].cloud
+        threeHourVis = threeHour[m].vis_miles
         console.log(threeHour[m].chance_of_rain)
         console.log(threeHour[m].gust_mph)
         console.log(threeHour[m].cloud)
@@ -98,3 +132,29 @@ function weatherClip() {
 // init page by running functions can be changed to buttons later
 getWeather();
 getLaunches();
+previousLaunches();
+
+// show forecast data for specific launch window in modal
+function showDialog() {
+    let dialog = document.getElementById('dialog');
+        dialog.classList.remove('hidden');
+        setTimeout(() => {
+            dialog.classList.remove('opacity-0');
+        }, 20);
+    $("#chanceDialog").text("Chance of rain:")
+    $("#windDialog").text("Gust Speed:")
+    $("#cloudDialog").text("Cloud Coverage:")
+    $("#visDialog").text("Visibility:")
+    $("#chanceDialog").append(" " + threeHourChance + "%")
+    $("#windDialog").append(" " + threeHourGust + "mph")
+    $("#cloudDialog").append(" " + threeHourClouds)
+    $("#visDialog").append(" " + threeHourVis + "mi")
+}
+// hide the dialog box when go back is clicked
+function hideDialog() {
+    let dialog = document.getElementById('dialog');
+    dialog.classList.add('opacity-0');
+    setTimeout(() => {
+        dialog.classList.add('hidden');
+    }, 500);
+}
