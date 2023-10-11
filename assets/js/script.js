@@ -206,6 +206,23 @@ button3.on('click', function(){
     $("#cloudDialog3").text("Cloud Coverage: " + threeHourClouds[8])
     $("#visDialog3").text("Visibility: " + threeHourVis[8])
 })
+
+// show forecast data for specific launch window in modal
+function showDialog() {
+    let dialog = document.getElementById('dialog');
+        dialog.classList.remove('hidden');
+        setTimeout(() => {
+            dialog.classList.remove('opacity-0');
+        }, 20);
+}
+// hide the dialog box when go back is clicked
+function hideDialog() {
+    let dialog = document.getElementById('dialog');
+    dialog.classList.add('opacity-0');
+    setTimeout(() => {
+        dialog.classList.add('hidden');
+    }, 500);
+}
 // init page by running functions can be changed to buttons later
 getWeather();
 getLaunches();

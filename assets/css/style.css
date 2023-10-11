@@ -54,7 +54,8 @@ img {
 .pastlaunch {
     font-size: 1.5rem;
     margin: 20px;
-    padding-top: 75px;
+    justify-content: center;
+    padding-top: 70px;
     color:#fff
 }
 
