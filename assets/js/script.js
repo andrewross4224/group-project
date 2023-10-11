@@ -131,7 +131,7 @@ getWeather();
 getLaunches();
 previousLaunches();
 
-// show forecast data for specific launch window
+// show forecast data for specific launch window in modal
 function showDialog() {
     dialog.show()
     $("#chanceDialog").text("Chance of rain:")
