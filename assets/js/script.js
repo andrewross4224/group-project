@@ -7,10 +7,10 @@ var weatherHour = [];
 var kennedy = [];
 var ourLaunches = [];
 var ourPreviousLaunches = [];
-var threeHourChance;
-var threeHourGust;
-var threeHourClouds;
-var threeHourVis;
+var threeHourChance = [];
+var threeHourGust = [];
+var threeHourClouds = [];
+var threeHourVis = [];
 var currentTime = dayjs().format("MM-DD-YYYY hh:mm:ss");
 var index = 0
 // loader element
@@ -23,6 +23,9 @@ var spacecenter = document.getElementsByClassName("spacecenter")
 var date = document.getElementsByClassName('date')
 var time = document.getElementsByClassName('time')
 // get modal to append forecast data
+var button1 = $('#button1')
+var button2 = $('#button2')
+var button3 = $('#button3')
 var dialog = $('#dialog')
 // fetch for launch data
 function getLaunches() {
@@ -120,35 +123,26 @@ function printtoPage() {
 // get three hour window of forecast data 
 function weatherClip() {
     for (m = 0; m < threeHour.length; m++) {
-        threeHourChance = threeHour[m].chance_of_rain
-        threeHourGust = threeHour[m].gust_mph
-        threeHourClouds = threeHour[m].cloud
-        threeHourVis = threeHour[m].vis_miles
-        console.log(threeHour[m].chance_of_rain)
-        console.log(threeHour[m].gust_mph)
-        console.log(threeHour[m].cloud)
+        threeHourChance.push(threeHour[m].chance_of_rain)
+        threeHourGust.push(threeHour[m].gust_mph)
+        threeHourClouds.push(threeHour[m].cloud)
+        threeHourVis.push(threeHour[m].vis_miles)
     }
 }
-// init page by running functions can be changed to buttons later
-getWeather();
-getLaunches();
-previousLaunches();
+function test() {
+    console.log(threeHourChance)
+    console.log(threeHourGust)
+    console.log(threeHourClouds)
+    console.log(threeHourVis)
+}
 
 // show forecast data for specific launch window in modal
 function showDialog() {
     let dialog = document.getElementById('dialog');
-        dialog.classList.remove('hidden');
-        setTimeout(() => {
-            dialog.classList.remove('opacity-0');
-        }, 20);
-    $("#chanceDialog").text("Chance of rain:")
-    $("#windDialog").text("Gust Speed:")
-    $("#cloudDialog").text("Cloud Coverage:")
-    $("#visDialog").text("Visibility:")
-    $("#chanceDialog").append(" " + threeHourChance + "%")
-    $("#windDialog").append(" " + threeHourGust + "mph")
-    $("#cloudDialog").append(" " + threeHourClouds)
-    $("#visDialog").append(" " + threeHourVis + "mi")
+    dialog.classList.remove('hidden');
+    setTimeout(() => {
+        dialog.classList.remove('opacity-0');
+    }, 20);
 }
 // hide the dialog box when go back is clicked
 function hideDialog() {
@@ -158,3 +152,78 @@ function hideDialog() {
         dialog.classList.add('hidden');
     }, 500);
 }
+
+button1.on('click', function(){
+    $("#hour1").text(dayjs(ourLaunches[0].window_start).utc().utcOffset(-4).format("h a"))
+    $("#chanceDialog1").text("Chance of rain: " + threeHourChance[0])
+    $("#windDialog1").text("Gust Speed: " + threeHourGust[0])
+    $("#cloudDialog1").text("Cloud Coverage: " + threeHourClouds[0])
+    $("#visDialog1").text("Visibility: " + threeHourVis[0])
+    $("#hour2").text(dayjs(ourLaunches[0].window_start).utc().utcOffset(-4).add(1, 'h').format("h a"))
+    $("#chanceDialog2").text("Chance of rain: " + threeHourChance[1])
+    $("#windDialog2").text("Gust Speed: " + threeHourGust[1])
+    $("#cloudDialog2").text("Cloud Coverage: " + threeHourClouds[1])
+    $("#visDialog2").text("Visibility: " + threeHourVis[1])
+    $("#hour3").text(dayjs(ourLaunches[0].window_start).utc().utcOffset(-4).add(2, 'h').format("h a"))
+    $("#chanceDialog3").text("Chance of rain: " + threeHourChance[2])
+    $("#windDialog3").text("Gust Speed: " + threeHourGust[2])
+    $("#cloudDialog3").text("Cloud Coverage: " + threeHourClouds[2])
+    $("#visDialog3").text("Visibility: " + threeHourVis[2])
+})
+
+button2.on('click', function(){
+    $("#hour1").text(dayjs(ourLaunches[1].window_start).utc().utcOffset(-4).format("h a"))
+    $("#chanceDialog1").text("Chance of rain: " + threeHourChance[3])
+    $("#windDialog1").text("Gust Speed: " + threeHourGust[3])
+    $("#cloudDialog1").text("Cloud Coverage: " + threeHourClouds[3])
+    $("#visDialog1").text("Visibility: " + threeHourVis[3])
+    $("#hour2").text(dayjs(ourLaunches[1].window_start).utc().utcOffset(-4).add(1, 'h').format("h a"))
+    $("#chanceDialog2").text("Chance of rain: " + threeHourChance[4])
+    $("#windDialog2").text("Gust Speed: " + threeHourGust[4])
+    $("#cloudDialog2").text("Cloud Coverage: " + threeHourClouds[4])
+    $("#visDialog2").text("Visibility: " + threeHourVis[4])
+    $("#hour3").text(dayjs(ourLaunches[1].window_start).utc().utcOffset(-4).add(2, 'h').format("h a"))
+    $("#chanceDialog3").text("Chance of rain: " + threeHourChance[5])
+    $("#windDialog3").text("Gust Speed: " + threeHourGust[5])
+    $("#cloudDialog3").text("Cloud Coverage: " + threeHourClouds[5])
+    $("#visDialog3").text("Visibility: " + threeHourVis[5])
+})
+
+button3.on('click', function(){
+    $("#hour1").text(dayjs(ourLaunches[2].window_start).utc().utcOffset(-4).format("h a"))
+    $("#chanceDialog1").text("Chance of rain: " + threeHourChance[6])
+    $("#windDialog1").text("Gust Speed: " + threeHourGust[6])
+    $("#cloudDialog1").text("Cloud Coverage: " + threeHourClouds[6])
+    $("#visDialog1").text("Visibility: " + threeHourVis[6])
+    $("#hour2").text(dayjs(ourLaunches[2].window_start).utc().utcOffset(-4).add(1, 'h').format("h a"))
+    $("#chanceDialog2").text("Chance of rain: " + threeHourChance[7])
+    $("#windDialog2").text("Gust Speed: " + threeHourGust[7])
+    $("#cloudDialog2").text("Cloud Coverage: " + threeHourClouds[7])
+    $("#visDialog2").text("Visibility: " + threeHourVis[7])
+    $("#hour3").text(dayjs(ourLaunches[2].window_start).utc().utcOffset(-4).add(2, 'h').format("h a"))
+    $("#chanceDialog3").text("Chance of rain: " + threeHourChance[8])
+    $("#windDialog3").text("Gust Speed: " + threeHourGust[8])
+    $("#cloudDialog3").text("Cloud Coverage: " + threeHourClouds[8])
+    $("#visDialog3").text("Visibility: " + threeHourVis[8])
+})
+
+// show forecast data for specific launch window in modal
+function showDialog() {
+    let dialog = document.getElementById('dialog');
+        dialog.classList.remove('hidden');
+        setTimeout(() => {
+            dialog.classList.remove('opacity-0');
+        }, 20);
+}
+// hide the dialog box when go back is clicked
+function hideDialog() {
+    let dialog = document.getElementById('dialog');
+    dialog.classList.add('opacity-0');
+    setTimeout(() => {
+        dialog.classList.add('hidden');
+    }, 500);
+}
+// init page by running functions can be changed to buttons later
+getWeather();
+getLaunches();
+previousLaunches();
