@@ -97,3 +97,17 @@ footer p {
     color:#fff;
 
 }
+
+.loader {
+    margin:auto;
+    border: 20px solid #fff;
+    border-top: 20px solid #305c6e;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
