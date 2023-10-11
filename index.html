@@ -17,10 +17,7 @@
                     <button type="button" class="px-4 py-2 text-lg font-medium text-white bg-cyan-700 border border-cyan-600 rounded-l-lg hover:bg-cyan-600">Upcoming Launches</button>
                 </li>
                 <li>
-                    <button type="button" class="px-4 py-2 text-lg font-medium text-white bg-cyan-700 border-t border-b border-cyan-600 hover:bg-cyan-600">Past Launches</button>
-                </li>
-                <li>
-                    <button type="button" class="px-4 py-2 text-lg font-medium text-white bg-cyan-700 border border-cyan-600 rounded-r-md hover:bg-cyan-600">Weather Forecast</button>
+                    <button type="button" class="px-4 py-2 text-lg font-medium text-white bg-cyan-700 border border-cyan-600 rounded-r-md hover:bg-cyan-600">Past Launches</button>
                 </li>
             </ul>
         </nav>
@@ -29,42 +26,78 @@
         <h2 class="header">The Space Spot</h2>
     </div>
     <div class="launches">
-        <h2 class="text-4xl">Upcoming Launches</h2>
+        <h2 class="text-4xl text-center">Upcoming Launches</h2>
         <ul class="launchcards">
             <li class="card">
-                <h3 class ="spacecenter">Location</h3>
-                <h4 class ="date">Date:</h4>
-                <h4 class ="time">Time:</h4>
+                <div class="relative flex w-96 flex-col rounded-xl bg-cyan-700/40 bg-clip-padding shadow-md">
+                    <div class="relative mx-4 -mt-6 h-56 overflow-hidden rounded-xl bg-cyan-500 bg-clip-border text-white shadow-lg shadow-cyan-800/40">
+                      <img class="card-img" src="https://images.unsplash.com/photo-1516849677043-ef67c9557e16?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&&amp;auto=format&amp;fit=crop&amp;w=400&amp;q=80" alt="img-placeholder" layout="fill"/>
+                    </div>
+                    <div class="p-6">
+                      <h5 class="spacecenter mb-2 block font-sans text-xl font-semibold text-white">Location</h5>
+                      <h5 class="date mb-2 block font-sans text-xl font-semibold text-white">Date:</h5>
+                      <h5 class="time mb-2 block font-sans text-xl font-semibold text-white">Time:</h5>
+                    </div>
+                    <div class="p-6 pt-0">
+                      <button class="py-3 px-6 rounded-lg bg-cyan-600 text-center text-xs font-bold uppercase text-white shadow-md shadow-cyan-800/20 transition-all hover:shadow-lg hover:shadow-cyan-800/40" type="button" onclick="showDialog();">Launch Forecast</button>
+                    </div>
+                </div>
             </li>
             <li class="card">
-                <h3 class ="spacecenter">Location</h3>
-                <h4 class ="date">Date:</h4>
-                <h4 class ="time">Time:</h4>
+                <div class="relative flex w-96 flex-col rounded-xl bg-cyan-700/40 bg-clip-padding shadow-md">
+                    <div class="relative mx-4 -mt-6 h-56 overflow-hidden rounded-xl bg-cyan-500 bg-clip-border text-white shadow-lg shadow-cyan-800/40">
+                      <img class="card-img" src="https://images.unsplash.com/photo-1516850228053-a807778c4e0f?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=400&amp;q=80" alt="img-placeholder" layout="fill"/>
+                    </div>
+                    <div class="p-6">
+                      <h5 class="spacecenter mb-2 block font-sans text-xl font-semibold text-white">Location</h5>
+                      <h5 class="date mb-2 block font-sans text-xl font-semibold text-white">Date:</h5>
+                      <h5 class="time mb-2 block font-sans text-xl font-semibold text-white">Time:</h5>
+                    </div>
+                    <div class="p-6 pt-0">
+                      <button class="py-3 px-6 rounded-lg bg-cyan-600 text-center text-xs font-bold uppercase text-white shadow-md shadow-cyan-800/20 transition-all hover:shadow-lg hover:shadow-cyan-800/40" type="button" onclick="showDialog();">Launch Forecast</button>
+                    </div>
+                </div>
             </li>
             <li class="card">
-                <h3 class ="spacecenter">Location</h3>
-                <h4 class ="date">Date:</h4>
-                <h4 class ="time">Time:</h4>
+                <div class="relative flex w-96 flex-col rounded-xl bg-cyan-700/40 bg-clip-padding shadow-md">
+                    <div class="relative mx-4 -mt-6 h-56 overflow-hidden rounded-xl bg-cyan-500 bg-clip-border text-white shadow-lg shadow-cyan-800/40">
+                      <img class="card-img" src="https://images.unsplash.com/photo-1457364847821-58861bbda116?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=400&amp;q=80" alt="img-placeholder" layout="fill"/>
+                    </div>
+                    <div class="p-6">
+                      <h5 class="spacecenter mb-2 block font-sans text-xl font-semibold text-white">Location</h5>
+                      <h5 class="date mb-2 block font-sans text-xl font-semibold text-white">Date:</h5>
+                      <h5 class="time mb-2 block font-sans text-xl font-semibold text-white">Time:</h5>
+                    </div>
+                    <div class="p-6 pt-0">
+                      <button class="py-3 px-6 rounded-lg bg-cyan-600 text-center text-xs font-bold uppercase text-white shadow-md shadow-cyan-800/20 transition-all hover:shadow-lg hover:shadow-cyan-800/40" type="button" onclick="showDialog();">Launch Forecast</button>
+                    </div>
+                    <!--Modal-->
+                    <div id="dialog" class="fixed left-0 top-0 bg-black bg-opacity-50 hidden w-screen h-screen" onclick="hideDialog()">
+                        <div class="bg-cyan-700 rounded shadow-md p-8 mx-auto my-20 w-1/4" onclick="event.stopImmediatePropagation()">
+                            <div class="flex items-center gap-2">
+                                <div class="text-white flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                                      </svg>                                
+                                </div>
+                                <div id="modal">
+                                    <h1 class="font-bold text-lg mb-2 text-white">Launch Forecast</h1>
+                                    <h5 id="chanceDialog"></h5>
+                                    <h5 id="windDialog"></h5>
+                                    <h5 id="cloudDialog"></h5>
+                                    <h5 id="visDialog"></h5>
+                                </div>
+                            </div>
+                            <div class="flex justify-end gap-4 mt-5">
+                                <button class="bg-cyan-600 border border-cyan-500 px-6 py-2 rounded text-white text-lg font-sans hover:bg-cyan-500 shadow-lg shadow-cyan-800" onclick="hideDialog()">Go Back</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
             </li>
         </ul>
     </div>
-    <div class="pastlaunch">
-        <h5 class="text-4xl">Past Launches</h5>
-        <ul class="pastlaunchcards">
-            <li class="pcard">
-                <h6 class="link">Filler</h6> 
-            </li>
-            <li class="pcard">
-                <h6 class="link">Filler</h6> 
-            </li>
-            <li class="pcard">
-                <h6 class="link">Filler</h6> 
-            </li>
-
-            </li>
-        </ul>
-    </div>
-        </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="https://unpkg.com/dayjs-plugin-utc"></script>
