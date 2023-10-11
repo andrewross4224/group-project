@@ -71,7 +71,7 @@ img {
 .pastlaunch {
     font-size: 1.5rem;
     margin: 20px;
-    padding-top: 100px;
+    padding-top: 75px;
     color:#fff
 }
 
@@ -89,4 +89,14 @@ img {
     border-radius: 5px;
     background: #305c6e;
     opacity: .4;
+}
+
+footer {
+    padding-top: 20px;
+    text-align: center;
+}
+
+footer p {
+    color:#fff;
+
 }
