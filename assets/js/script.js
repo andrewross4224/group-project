@@ -162,10 +162,10 @@ function hideDialog() {
 }
 
 button1.on('click', function(){
-    $("#chanceDialog").text("Chance of rain: " + )
-    $("#windDialog").text("Gust Speed:")
-    $("#cloudDialog").text("Cloud Coverage:")
-    $("#visDialog").text("Visibility:")
+    $("#chanceDialog").text("Chance of rain: " + threeHourChance[0])
+    $("#windDialog").text("Gust Speed: " + threeHourGust[0])
+    $("#cloudDialog").text("Cloud Coverage: " + threeHourClouds[0])
+    $("#visDialog").text("Visibility: " + threeHourVis[0])
 })
 // init page by running functions can be changed to buttons later
 getWeather();
