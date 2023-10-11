@@ -26,7 +26,7 @@
         <h2 class="header">The Space Spot</h2>
     </div>
     <div class="launches">
-        <h2 class="text-4xl">Upcoming Launches</h2>
+        <h2 class="text-4xl text-center">Upcoming Launches</h2>
         <ul class="launchcards">
             <li class="card">
                 <div class="relative flex w-96 flex-col rounded-xl bg-cyan-700/40 bg-clip-padding shadow-md">
@@ -102,23 +102,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="https://unpkg.com/dayjs-plugin-utc"></script>
-    <script>
-        function showDialog() {
-        let dialog = document.getElementById('dialog');
-        dialog.classList.remove('hidden');
-        setTimeout(() => {
-            dialog.classList.remove('opacity-0');
-        }, 20);
-    }
-
-    function hideDialog() {
-        let dialog = document.getElementById('dialog');
-        dialog.classList.add('opacity-0');
-        setTimeout(() => {
-            dialog.classList.add('hidden');
-        }, 500);
-    }
-    </script>
 <script>
   dayjs.extend(dayjsPluginUTC.default)
 </script> 

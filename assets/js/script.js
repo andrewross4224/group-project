@@ -136,7 +136,11 @@ previousLaunches();
 
 // show forecast data for specific launch window in modal
 function showDialog() {
-    dialog.show()
+    let dialog = document.getElementById('dialog');
+        dialog.classList.remove('hidden');
+        setTimeout(() => {
+            dialog.classList.remove('opacity-0');
+        }, 20);
     $("#chanceDialog").text("Chance of rain:")
     $("#windDialog").text("Gust Speed:")
     $("#cloudDialog").text("Cloud Coverage:")
@@ -148,5 +152,9 @@ function showDialog() {
 }
 // hide the dialog box when go back is clicked
 function hideDialog() {
-    dialog.hide();
+    let dialog = document.getElementById('dialog');
+    dialog.classList.add('opacity-0');
+    setTimeout(() => {
+        dialog.classList.add('hidden');
+    }, 500);
 }
