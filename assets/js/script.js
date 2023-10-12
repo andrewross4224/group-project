@@ -17,6 +17,7 @@ var index = 0
 var launches = document.getElementById("launches");
 // get card classes to post data to page
 var images = document.getElementsByClassName('card-img')
+var spaceCraft = document.getElementsByClassName('spaceCraft')
 var spacecenter = document.getElementsByClassName("spacecenter")
 var date = document.getElementsByClassName('date')
 var time = document.getElementsByClassName('time')
@@ -113,6 +114,7 @@ function weatherCheck() {
 function printtoPage() {
     images[index].src = ourLaunches[index].image;
     spacecenter[index].textContent = ourLaunches[index].pad.name;
+    spaceCraft[index].textContent = ourLaunches[index].rocket.configuration.full_name;
     date[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("dddd MMM D, YYYY");
     time[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("h:mm a");
     index += 1;
