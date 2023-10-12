@@ -10,14 +10,19 @@
 </head>
 
 <body>
-    <aside>
-        <form>
-            <h7>Launch Search</h7>
-            <input type="text" placeholder="mm/dd/yyyy">
-            <button type="submit">Search</button>
+    <aside class="">
+        <h7 class="mb-2 block font-sans text-xl font-semibold text-white">Launch Search</h7>
+        <form class="mb-4">
+            <input id="userInput" class="py-1" type="date" placeholder="mm-dd-yyyy">
+            <button id="searchBtn" type="submit">Search</button>
         </form>
+        <h5 id="userLocation" class="mb-2 block font-sans text-xl font-semibold text-white flex justify-center"></h5>
+        <h5 id="userSpaceCraft" class="mb-2 block font-sans text-xl font-semibold text-white flex justify-center"></h5>
+        <h5 id="userDate" class="mb-2 block font-sans text-xl font-semibold text-white flex justify-center"></h5>
+        <h5 id="missionText" class="underline text-cyan-300 mb-2 mt-8 block font-sans text-xl font-semibold"></h5>
+        <h5 id="missionDescription" class="mb-2 block font-sans text-xl font-semibold text-white flex justify-center"></h5>
     </aside>
-    <div>
+    <div id="divcontainer">
         <h2 class="header">The Space Spot</h2>
         <p class="mt-3 block font-sans font-semibold text-white text-center">Tracking Space-X launches from Kennedy
             Space Center & Cape Canaveral</p>
@@ -130,7 +135,7 @@
                                 Date</h5>
                         </div>
                         <div class="p-6 pt-0 flex justify-center">
-                            <button id="modalBtn"
+                            <button id="pastBtn1"
                                 class="py-3 px-6 rounded-lg bg-cyan-600 text-center text-xs font-bold uppercase text-white shadow-md shadow-cyan-800/20 transition-all hover:shadow-lg hover:shadow-cyan-800/40 flex justify-center"
                                 type="button">Launch Description</button>
                         </div>
@@ -150,7 +155,7 @@
                                 Date</h5>
                         </div>
                         <div class="p-6 pt-0 flex justify-center">
-                            <button id="modalBtn"
+                            <button id="pastBtn2"
                                 class="py-3 px-6 rounded-lg bg-cyan-600 text-center text-xs font-bold uppercase text-white shadow-md shadow-cyan-800/20 transition-all hover:shadow-lg hover:shadow-cyan-800/40 flex justify-center"
                                 type="button">Launch Description</button>
                         </div>
@@ -170,7 +175,7 @@
                                 Date</h5>
                         </div>
                         <div class="p-6 pt-0 flex justify-center">
-                            <button id="modalBtn"
+                            <button id="pastBtn3"
                                 class="py-3 px-6 rounded-lg bg-cyan-600 text-center text-xs font-bold uppercase text-white shadow-md shadow-cyan-800/20 transition-all hover:shadow-lg hover:shadow-cyan-800/40 flex justify-center"
                                 type="button">Launch Description</button>
                         </div>
@@ -185,7 +190,7 @@
                 <div class="flex items-center gap-2">
                     <div id="modal" class="flex flex-col justify-center">
                         <h1 class="font-semibold text-4xl mb-2 text-white">Launch Forecast </h1>
-                        <h4 id="hour1" class="underline text-cyan-300" ></h4>
+                        <h4 id="hour1" class="underline text-cyan-300"></h4>
                         <h5 id="chanceDialog1"></h5>
                         <h5 id="windDialog1"></h5>
                         <h5 id="cloudDialog1"></h5>
@@ -211,26 +216,14 @@
         </div>
         <div id="modalTwo" class="modTwo">
             <div class="innerModal text-white">
-                <h5 class="mb-2 block font-sans text-xl font-bold flex justify-center">Launch Description</h5>
-                <h6 class="font-semibold text-lg mb-2 flex justify-center">abc</h6>
-                <h6 class="font-semibold text-lg mb-2 flex justify-center">xyz</h6>
-                <h6 class="font-semibold text-lg mb-2 flex justify-center">abc</h6>
-                <h6 class="font-semibold text-lg mb-2 flex justify-center">xyz</h6>
-                <h6 class="font-semibold text-lg mb-2 flex justify-center">abc</h6>
-                <h6 class="font-semibold text-lg mb-2 flex justify-center">xyz</h6>
-                <h6 class="font-semibold text-lg mb-2 flex justify-center">abc</h6>
-                <h6 class="font-semibold text-lg mb-2 flex justify-center">xyz</h6>
-                <h6 class="font-semibold text-lg mb-2 flex justify-center">abc</h6>
-                <h6 class="font-semibold text-lg mb-2 flex justify-center">xyz</h6>
-                <h6 class="font-semibold text-lg mb-2 flex justify-center">abc</h6>
-                <h6 class="font-semibold text-lg mb-2 flex justify-center">xyz</h6>
-                <h6 class="font-semibold text-lg mb-2 flex justify-center">abc</h6>
-                <h6 class="font-semibold text-lg mb-2 flex justify-center">xyz</h6>
+                <h5 class="underline text-cyan-300 mb-2 font-sans text-xl font-semibold flex justify-center">Mission Description</h5>
+                <h6 id="pastDescription" class="font-semibold text-lg mb-2 flex justify-center"></h6>
+                <div class="flex justify-center p-1">
+                    <button id="closeModal2"
+                        class="bg-cyan-600 border border-cyan-500 px-6 py-2 rounded text-white text-lg font-sans hover:bg-cyan-500 shadow-lg shadow-cyan-800">Go
+                        Back</button>
+                </div>
 
-            </div>
-            <div class="flex justify-center p-1">
-                <button
-                    class="bg-cyan-600 border border-cyan-500 px-6 py-2 rounded text-white text-lg font-sans hover:bg-cyan-500 shadow-lg shadow-cyan-800 close">Go Back</button>
             </div>
         </div>
     </div>
@@ -243,9 +236,9 @@
     </script>
     <script src="./assets/js/script.js"></script>
 </body>
-<footer>
+<footer id="divcontainer">
     <p>& copy; 2023 The Space Spot. All rights reserved.</p>
+    <div id="loader"></div>
 </footer>
-<div id="loader"></div>
 
 </html>
