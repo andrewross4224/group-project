@@ -135,7 +135,6 @@ footer p {
   }
 
 .modTwo {
-    ;
     position:fixed;
     z-index: 1;
     left: 0;
@@ -151,10 +150,6 @@ footer p {
     background-color: #0E7490;
     margin: auto;
     padding: 20px;
-    border: 1px solid #09A0BD;
     width: 25%;
 }
 
-.close{
-    color: #17819d;
-}
