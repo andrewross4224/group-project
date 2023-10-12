@@ -80,6 +80,7 @@ function previousFilter() {
             ourPreviousLaunches.push(previousLaunchData.results[m]);
         }
     }
+    recentLaunches();
 }
 // broken time check function need to revisit
 function timeCheck() {
@@ -112,7 +113,6 @@ function weatherCheck() {
         }
     }
     buttonData();
-    recentLaunches();
 }
 // function to set text content of cards to rocket launchpad and date
 function printtoPage() {
@@ -122,7 +122,7 @@ function printtoPage() {
     date[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("dddd MMM D, YYYY");
     time[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("h:mm a");
     index += 1;
-    $('#loader').hide()
+    $('#loader').hide();
 }
 
 // function to iterate through 3 most recent launches and post data 
