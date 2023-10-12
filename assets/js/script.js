@@ -31,7 +31,7 @@ var button3 = $('#button3')
 var dialog = $('#dialog')
 // fetch for launch data
 function getLaunches() {
-    var launchUrl = 'https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=100&lsp__name=Spacex'
+    var launchUrl = 'https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=100&lsp__name=Spacex'
     fetch(launchUrl)
         .then(function (response) {
             return response.json();
@@ -43,7 +43,7 @@ function getLaunches() {
 }
 // fetch for past launches
 function previousLaunches() {
-    var previousUrl = 'https://lldev.thespacedevs.com/2.2.0/launch/previous/?limit=100&lsp__name=Spacex'
+    var previousUrl = 'https://ll.thespacedevs.com/2.2.0/launch/previous/?limit=100&lsp__name=Spacex'
     fetch(previousUrl)
         .then(function (response) {
             return response.json();

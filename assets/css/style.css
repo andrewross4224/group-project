@@ -83,9 +83,10 @@ aside {
     background-color: #305c6e;
     padding: 10px;
     margin: 10px;
+    margin-top: 200px;
     width: 350px;
-    position: absolute;
-    height: 93%;
+    position: fixed;
+    height: 60%;
     border-radius: 5px;
     text-align: center;
 }
