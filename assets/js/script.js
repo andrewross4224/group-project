@@ -47,7 +47,6 @@ function previousLaunches() {
         })
         .then(function (data) {
             previousLaunchData = data;
-            console.log(previousLaunchData)
             previousFilter();
         })
 }
@@ -109,6 +108,7 @@ function weatherCheck() {
             }
         }
     }
+    buttonData();
 }
 // function to set text content of cards to rocket launchpad and date
 function printtoPage() {
@@ -129,13 +129,17 @@ function weatherClip() {
         threeHourVis.push(threeHour[m].vis_miles)
     }
 }
-function test() {
-    console.log(threeHourChance)
-    console.log(threeHourGust)
-    console.log(threeHourClouds)
-    console.log(threeHourVis)
+function buttonData() {
+    if (threeHourChance[0] === undefined) {
+        button1.attr("disabled", true)
+    }
+    if (threeHourChance[3] === undefined) {
+        button2.attr("disabled", true)
+    }
+    if (threeHourChance[6] === undefined) {
+        button3.attr("disabled", true)
+    }
 }
-
 // show forecast data for specific launch window in modal
 function showDialog() {
     let dialog = document.getElementById('dialog');
@@ -153,7 +157,7 @@ function hideDialog() {
     }, 500);
 }
 
-button1.on('click', function(){
+button1.on('click', function () {
     $("#hour1").text(dayjs(ourLaunches[0].window_start).utc().utcOffset(-4).format("h a"))
     $("#chanceDialog1").text("Chance of rain: " + threeHourChance[0])
     $("#windDialog1").text("Gust Speed: " + threeHourGust[0])
@@ -171,7 +175,7 @@ button1.on('click', function(){
     $("#visDialog3").text("Visibility: " + threeHourVis[2])
 })
 
-button2.on('click', function(){
+button2.on('click', function () {
     $("#hour1").text(dayjs(ourLaunches[1].window_start).utc().utcOffset(-4).format("h a"))
     $("#chanceDialog1").text("Chance of rain: " + threeHourChance[3])
     $("#windDialog1").text("Gust Speed: " + threeHourGust[3])
@@ -189,7 +193,7 @@ button2.on('click', function(){
     $("#visDialog3").text("Visibility: " + threeHourVis[5])
 })
 
-button3.on('click', function(){
+button3.on('click', function () {
     $("#hour1").text(dayjs(ourLaunches[2].window_start).utc().utcOffset(-4).format("h a"))
     $("#chanceDialog1").text("Chance of rain: " + threeHourChance[6])
     $("#windDialog1").text("Gust Speed: " + threeHourGust[6])
@@ -210,10 +214,10 @@ button3.on('click', function(){
 // show forecast data for specific launch window in modal
 function showDialog() {
     let dialog = document.getElementById('dialog');
-        dialog.classList.remove('hidden');
-        setTimeout(() => {
-            dialog.classList.remove('opacity-0');
-        }, 20);
+    dialog.classList.remove('hidden');
+    setTimeout(() => {
+        dialog.classList.remove('opacity-0');
+    }, 20);
 }
 // hide the dialog box when go back is clicked
 function hideDialog() {
