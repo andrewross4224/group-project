@@ -55,7 +55,7 @@ function previousLaunches() {
 }
 // fetch for weather forcast
 function getWeather() {
-    var weatherUrl = "http://api.weatherapi.com/v1/forecast.json?key=e0bee2c578604174b22235058230410&q=merritt island&days=14&aqi=no&alerts=no"
+    var weatherUrl = "https://api.weatherapi.com/v1/forecast.json?key=e0bee2c578604174b22235058230410&q=merritt island&days=14&aqi=no&alerts=no"
     fetch(weatherUrl)
         .then(function (response) {
             return response.json();
