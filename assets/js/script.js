@@ -47,7 +47,6 @@ function previousLaunches() {
         })
         .then(function (data) {
             previousLaunchData = data;
-            console.log(previousLaunchData)
             previousFilter();
         })
 }
@@ -109,6 +108,7 @@ function weatherCheck() {
             }
         }
     }
+    buttonData();
 }
 // function to set text content of cards to rocket launchpad and date
 function printtoPage() {
@@ -129,13 +129,17 @@ function weatherClip() {
         threeHourVis.push(threeHour[m].vis_miles)
     }
 }
-function test() {
-    console.log(threeHourChance)
-    console.log(threeHourGust)
-    console.log(threeHourClouds)
-    console.log(threeHourVis)
+function buttonData() {
+    if (threeHourChance[0] === undefined) {
+        button1.attr("disabled", true)
+    }
+    if (threeHourChance[3] === undefined) {
+        button2.attr("disabled", true)
+    }
+    if (threeHourChance[6] === undefined) {
+        button3.attr("disabled", true)
+    }
 }
-
 // show forecast data for specific launch window in modal
 function showDialog() {
     let dialog = document.getElementById('dialog');
@@ -155,65 +159,65 @@ function hideDialog() {
 
 button1.on('click', function(){
     $("#hour1").text(dayjs(ourLaunches[0].window_start).utc().utcOffset(-4).format("h a"))
-    $("#chanceDialog1").text("Chance of rain: " + threeHourChance[0])
-    $("#windDialog1").text("Gust Speed: " + threeHourGust[0])
-    $("#cloudDialog1").text("Cloud Coverage: " + threeHourClouds[0])
-    $("#visDialog1").text("Visibility: " + threeHourVis[0])
+    $("#chanceDialog1").text("Chance of rain: " + threeHourChance[0] + "%")
+    $("#windDialog1").text("Gust Speed: " + threeHourGust[0] + "mph")
+    $("#cloudDialog1").text("Cloud Coverage: " + threeHourClouds[0] + "%")
+    $("#visDialog1").text("Visibility: " + threeHourVis[0] + "mi")
     $("#hour2").text(dayjs(ourLaunches[0].window_start).utc().utcOffset(-4).add(1, 'h').format("h a"))
-    $("#chanceDialog2").text("Chance of rain: " + threeHourChance[1])
-    $("#windDialog2").text("Gust Speed: " + threeHourGust[1])
-    $("#cloudDialog2").text("Cloud Coverage: " + threeHourClouds[1])
-    $("#visDialog2").text("Visibility: " + threeHourVis[1])
+    $("#chanceDialog2").text("Chance of rain: " + threeHourChance[1] + "%")
+    $("#windDialog2").text("Gust Speed: " + threeHourGust[1] + "mph")
+    $("#cloudDialog2").text("Cloud Coverage: " + threeHourClouds[1] + "%")
+    $("#visDialog2").text("Visibility: " + threeHourVis[1] + "mi")
     $("#hour3").text(dayjs(ourLaunches[0].window_start).utc().utcOffset(-4).add(2, 'h').format("h a"))
     $("#chanceDialog3").text("Chance of rain: " + threeHourChance[2])
-    $("#windDialog3").text("Gust Speed: " + threeHourGust[2])
-    $("#cloudDialog3").text("Cloud Coverage: " + threeHourClouds[2])
-    $("#visDialog3").text("Visibility: " + threeHourVis[2])
+    $("#windDialog3").text("Gust Speed: " + threeHourGust[2] + "mph")
+    $("#cloudDialog3").text("Cloud Coverage: " + threeHourClouds[2] + "%")
+    $("#visDialog3").text("Visibility: " + threeHourVis[2] + "mi")
 })
 
 button2.on('click', function(){
     $("#hour1").text(dayjs(ourLaunches[1].window_start).utc().utcOffset(-4).format("h a"))
-    $("#chanceDialog1").text("Chance of rain: " + threeHourChance[3])
-    $("#windDialog1").text("Gust Speed: " + threeHourGust[3])
-    $("#cloudDialog1").text("Cloud Coverage: " + threeHourClouds[3])
-    $("#visDialog1").text("Visibility: " + threeHourVis[3])
+    $("#chanceDialog1").text("Chance of rain: " + threeHourChance[3] + "%")
+    $("#windDialog1").text("Gust Speed: " + threeHourGust[3] + "mph")
+    $("#cloudDialog1").text("Cloud Coverage: " + threeHourClouds[3] + "%")
+    $("#visDialog1").text("Visibility: " + threeHourVis[3] + "mi")
     $("#hour2").text(dayjs(ourLaunches[1].window_start).utc().utcOffset(-4).add(1, 'h').format("h a"))
-    $("#chanceDialog2").text("Chance of rain: " + threeHourChance[4])
-    $("#windDialog2").text("Gust Speed: " + threeHourGust[4])
-    $("#cloudDialog2").text("Cloud Coverage: " + threeHourClouds[4])
-    $("#visDialog2").text("Visibility: " + threeHourVis[4])
+    $("#chanceDialog2").text("Chance of rain: " + threeHourChance[4] + "%")
+    $("#windDialog2").text("Gust Speed: " + threeHourGust[4] + "mph")
+    $("#cloudDialog2").text("Cloud Coverage: " + threeHourClouds[4] + "%")
+    $("#visDialog2").text("Visibility: " + threeHourVis[4] + "mi")
     $("#hour3").text(dayjs(ourLaunches[1].window_start).utc().utcOffset(-4).add(2, 'h').format("h a"))
-    $("#chanceDialog3").text("Chance of rain: " + threeHourChance[5])
-    $("#windDialog3").text("Gust Speed: " + threeHourGust[5])
-    $("#cloudDialog3").text("Cloud Coverage: " + threeHourClouds[5])
-    $("#visDialog3").text("Visibility: " + threeHourVis[5])
+    $("#chanceDialog3").text("Chance of rain: " + threeHourChance[5] + "%")
+    $("#windDialog3").text("Gust Speed: " + threeHourGust[5] + "mph")
+    $("#cloudDialog3").text("Cloud Coverage: " + threeHourClouds[5] + "%")
+    $("#visDialog3").text("Visibility: " + threeHourVis[5] + "mi")
 })
 
 button3.on('click', function(){
     $("#hour1").text(dayjs(ourLaunches[2].window_start).utc().utcOffset(-4).format("h a"))
-    $("#chanceDialog1").text("Chance of rain: " + threeHourChance[6])
-    $("#windDialog1").text("Gust Speed: " + threeHourGust[6])
-    $("#cloudDialog1").text("Cloud Coverage: " + threeHourClouds[6])
-    $("#visDialog1").text("Visibility: " + threeHourVis[6])
+    $("#chanceDialog1").text("Chance of rain: " + threeHourChance[6] + "%")
+    $("#windDialog1").text("Gust Speed: " + threeHourGust[6] + "mph")
+    $("#cloudDialog1").text("Cloud Coverage: " + threeHourClouds[6] + "%")
+    $("#visDialog1").text("Visibility: " + threeHourVis[6] + "mi")
     $("#hour2").text(dayjs(ourLaunches[2].window_start).utc().utcOffset(-4).add(1, 'h').format("h a"))
-    $("#chanceDialog2").text("Chance of rain: " + threeHourChance[7])
-    $("#windDialog2").text("Gust Speed: " + threeHourGust[7])
-    $("#cloudDialog2").text("Cloud Coverage: " + threeHourClouds[7])
-    $("#visDialog2").text("Visibility: " + threeHourVis[7])
+    $("#chanceDialog2").text("Chance of rain: " + threeHourChance[7] + "%")
+    $("#windDialog2").text("Gust Speed: " + threeHourGust[7] + "mph")
+    $("#cloudDialog2").text("Cloud Coverage: " + threeHourClouds[7] + "%")
+    $("#visDialog2").text("Visibility: " + threeHourVis[7] + "mi")
     $("#hour3").text(dayjs(ourLaunches[2].window_start).utc().utcOffset(-4).add(2, 'h').format("h a"))
-    $("#chanceDialog3").text("Chance of rain: " + threeHourChance[8])
-    $("#windDialog3").text("Gust Speed: " + threeHourGust[8])
-    $("#cloudDialog3").text("Cloud Coverage: " + threeHourClouds[8])
-    $("#visDialog3").text("Visibility: " + threeHourVis[8])
+    $("#chanceDialog3").text("Chance of rain: " + threeHourChance[8] + "%")
+    $("#windDialog3").text("Gust Speed: " + threeHourGust[8] + "mph")
+    $("#cloudDialog3").text("Cloud Coverage: " + threeHourClouds[8] + "%")
+    $("#visDialog3").text("Visibility: " + threeHourVis[8] + "mi")
 })
 
 // show forecast data for specific launch window in modal
 function showDialog() {
     let dialog = document.getElementById('dialog');
-        dialog.classList.remove('hidden');
-        setTimeout(() => {
-            dialog.classList.remove('opacity-0');
-        }, 20);
+    dialog.classList.remove('hidden');
+    setTimeout(() => {
+        dialog.classList.remove('opacity-0');
+    }, 20);
 }
 // hide the dialog box when go back is clicked
 function hideDialog() {
