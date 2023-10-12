@@ -199,7 +199,7 @@ button1.on('click', function () {
     $("#cloudDialog2").text("Cloud Coverage: " + threeHourClouds[1] + "%")
     $("#visDialog2").text("Visibility: " + threeHourVis[1] + " mi")
     $("#hour3").text(dayjs(ourLaunches[0].window_start).utc().utcOffset(-4).add(2, 'h').format("h a"))
-    $("#chanceDialog3").text("Chance of rain: " + threeHourChance[2])
+    $("#chanceDialog3").text("Chance of rain: " + threeHourChance[2] + "%")
     $("#windDialog3").text("Gust Speed: " + threeHourGust[2] + " mph")
     $("#cloudDialog3").text("Cloud Coverage: " + threeHourClouds[2] + "%")
     $("#visDialog3").text("Visibility: " + threeHourVis[2] + " mi")
