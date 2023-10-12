@@ -240,6 +240,23 @@ function hideDialog() {
         dialog.classList.add('hidden');
     }, 500);
 }
+//secondary modal-past launches
+var modal2 = document.getElementById("modalTwo");
+var modalbtn2 = document.getElementById("modalBtn");
+var close = document.getElementsByClassName("close") [0];
+
+modalbtn2.onclick = function() {
+    modal2.style.display="block";
+}
+close.onclick = function() {
+    modal2.style.display ="none";
+}
+window.onclick = function(event) {
+    if (event.target == modal2) {
+      modal2.style.display = "none";
+    }
+}
+
 // init page by running functions can be changed to buttons later
 getWeather();
 getLaunches();
