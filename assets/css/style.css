@@ -83,6 +83,23 @@ aside {
     border: 1px solid #ccc;
     width: 300px;
 }
+aside form {
+    display: flex;
+    align-items: center;
+}
+
+aside input [type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+aside button[type="submit"] {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
 
 footer {
     padding-top: 20px;
