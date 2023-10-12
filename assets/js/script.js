@@ -21,6 +21,9 @@ var spaceCraft = document.getElementsByClassName('spaceCraft')
 var spacecenter = document.getElementsByClassName("spacecenter")
 var date = document.getElementsByClassName('date')
 var time = document.getElementsByClassName('time')
+var previousSpaceCraft = document.getElementsByClassName('previousSpaceCraft')
+var previousLocation = document.getElementsByClassName('previousLocation')
+var previousDate = document.getElementsByClassName('previousDate')
 // get modal to append forecast data
 var button1 = $('#button1')
 var button2 = $('#button2')
@@ -108,6 +111,7 @@ function weatherCheck() {
             }
         }
     }
+    recentLaunches();
     buttonData();
 }
 // function to set text content of cards to rocket launchpad and date
@@ -119,6 +123,15 @@ function printtoPage() {
     time[index].textContent = dayjs(ourLaunches[index].window_start).utc().utcOffset(-4).format("h:mm a");
     index += 1;
     $('#loader').hide()
+}
+
+// function to iterate through 3 most recent launches and post data 
+function recentLaunches() {
+    for (o = 0; o < previousLocation.length; o++) {
+        previousLocation[o].textContent = ourPreviousLaunches[o].pad.name;
+        previousSpaceCraft[o].textContent = ourPreviousLaunches[o].rocket.configuration.full_name;
+        previousDate[o].textContent = dayjs(ourPreviousLaunches[o].net).utc().utcOffset(-4).format("dddd MMM D, YYYY");
+    }
 }
 // get three hour window of forecast data 
 function weatherClip() {
@@ -157,7 +170,7 @@ function hideDialog() {
     }, 500);
 }
 
-button1.on('click', function(){
+button1.on('click', function () {
     $("#hour1").text(dayjs(ourLaunches[0].window_start).utc().utcOffset(-4).format("h a"))
     $("#chanceDialog1").text("Chance of rain: " + threeHourChance[0] + "%")
     $("#windDialog1").text("Gust Speed: " + threeHourGust[0] + "mph")
@@ -175,7 +188,7 @@ button1.on('click', function(){
     $("#visDialog3").text("Visibility: " + threeHourVis[2] + "mi")
 })
 
-button2.on('click', function(){
+button2.on('click', function () {
     $("#hour1").text(dayjs(ourLaunches[1].window_start).utc().utcOffset(-4).format("h a"))
     $("#chanceDialog1").text("Chance of rain: " + threeHourChance[3] + "%")
     $("#windDialog1").text("Gust Speed: " + threeHourGust[3] + "mph")
@@ -193,7 +206,7 @@ button2.on('click', function(){
     $("#visDialog3").text("Visibility: " + threeHourVis[5] + "mi")
 })
 
-button3.on('click', function(){
+button3.on('click', function () {
     $("#hour1").text(dayjs(ourLaunches[2].window_start).utc().utcOffset(-4).format("h a"))
     $("#chanceDialog1").text("Chance of rain: " + threeHourChance[6] + "%")
     $("#windDialog1").text("Gust Speed: " + threeHourGust[6] + "mph")
