@@ -32,6 +32,10 @@ img {
     }
 }
 
+#divcontainer{
+    margin-left: 368px;
+}
+
 .launches {
     font-size: 1.5rem;
     margin:20px;
@@ -77,19 +81,14 @@ img {
 
 aside {
     background-color: #305c6e;
-    opacity: .4;
     padding: 10px;
     margin: 10px;
-    border: 1px solid #ccc;
     width: 350px;
     position: absolute;
     height: 93%;
+    border-radius: 5px;
+    text-align: center;
 }
-aside form {
-    display: flex;
-    align-items: center;
-}
-
 aside input [type="text"] {
     padding: 5px;
     border: 1px solid #ccc;
@@ -152,6 +151,7 @@ footer p {
 .innerModal {
     background-color: #0E7490;
     margin: auto;
+    margin-top: 100px;
     padding: 20px;
     width: 25%;
 }

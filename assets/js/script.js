@@ -153,6 +153,23 @@ function buttonData() {
         button3.attr("disabled", true)
     }
 }
+// user search function
+function userSearch(input) {
+    $("#userLocation").text("No launches for " + dayjs(input).format("MM-DD-YYYY"))
+    $("#userSpaceCraft").text("")
+    $("#userDate").text("")
+    $("#missionText").text("")
+    $("#missionDescription").text("")
+    for (u = 0; u < ourPreviousLaunches.length -1; u++) {
+        if (input === dayjs(ourPreviousLaunches[u].net).utc().utcOffset(-4).format("YYYY-MM-DD")) {
+            $("#userLocation").text(ourPreviousLaunches[u].pad.name)
+            $("#userSpaceCraft").text(ourPreviousLaunches[u].rocket.configuration.full_name)
+            $("#userDate").text(dayjs(ourPreviousLaunches[u].net).utc().utcOffset(-4).format("dddd MMM D, YYYY"))
+            $("#missionText").text("Mission Description")
+            $("#missionDescription").text(ourPreviousLaunches[u].mission.description)
+        }
+    }
+}
 // show forecast data for specific launch window in modal
 function showDialog() {
     let dialog = document.getElementById('dialog');
@@ -240,21 +257,37 @@ function hideDialog() {
         dialog.classList.add('hidden');
     }, 500);
 }
+$("#searchBtn").on("click", function (event) {
+    event.preventDefault()
+    var userInput = $("#userInput").val()
+    $("#userInput").val("")
+    userSearch(userInput);
+})
 //secondary modal-past launches
-var modal2 = document.getElementById("modalTwo");
-var modalbtn2 = document.getElementById("modalBtn");
-var close = document.getElementsByClassName("close") [0];
+var modal2 = $("#modalTwo");
+var pastBtn1 = $("#pastBtn1");
+var pastBtn2 = $("#pastBtn2");
+var pastBtn3 = $("#pastBtn3");
 
-modalbtn2.onclick = function() {
-    modal2.style.display="block";
-}
-close.onclick = function() {
-    modal2.style.display ="none";
-}
-window.onclick = function(event) {
-    if (event.target == modal2) {
-      modal2.style.display = "none";
-    }
+$("#closeModal2").on('click', function () {
+    modal2.css("display", "none")
+})
+
+pastBtn1.on('click', function(){
+    $("#pastDescription").text(ourPreviousLaunches[0].mission.description)
+    openModal();
+})
+pastBtn2.on('click', function(){
+    $("#pastDescription").text(ourPreviousLaunches[1].mission.description)
+    openModal();
+})
+pastBtn3.on('click', function(){
+    $("#pastDescription").text(ourPreviousLaunches[2].mission.description)
+    openModal();
+})
+
+function openModal() {
+    modal2.css("display", "block")
 }
 
 // init page by running functions can be changed to buttons later
