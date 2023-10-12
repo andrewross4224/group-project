@@ -82,6 +82,8 @@ aside {
     margin: 10px;
     border: 1px solid #ccc;
     width: 350px;
+    position: absolute;
+    height: 93%;
 }
 aside form {
     display: flex;
