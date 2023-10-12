@@ -111,8 +111,8 @@ function weatherCheck() {
             }
         }
     }
-    recentLaunches();
     buttonData();
+    recentLaunches();
 }
 // function to set text content of cards to rocket launchpad and date
 function printtoPage() {

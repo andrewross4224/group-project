@@ -56,7 +56,7 @@ img {
     margin: 20px;
     justify-content: center;
     padding-top: 70px;
-    color:#fff
+    color:#fff;
 }
 
 .pastlaunchcards {
@@ -121,6 +121,12 @@ footer p {
     animation: spin 2s linear infinite;
     position: relative;
     margin-top: -830px;
+}
+
+#dialog {
+    font-size: 1.5rem;
+    padding-top: 50px;
+    color: #fff;
 }
 
 @keyframes spin {
