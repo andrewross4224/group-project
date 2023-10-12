@@ -35,7 +35,7 @@ img {
 .launches {
     font-size: 1.5rem;
     margin:20px;
-    padding-top: 20px;
+    padding-top: 50px;
     color: #fff;
 }
 
@@ -64,15 +64,6 @@ img {
     justify-content: center;
     gap: 50px;
     margin-top: 25px;
-}
-
-.pastlaunchcards .pcard {
-    list-style: none;
-    color: #fff;
-    padding: 70px 68px;
-    border-radius: 5px;
-    background: #305c6e;
-    opacity: .4;
 }
 
 footer {
