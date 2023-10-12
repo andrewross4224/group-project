@@ -75,6 +75,15 @@ img {
     opacity: .4;
 }
 
+aside {
+    background-color: #305c6e;
+    opacity: .4;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    width: 300px;
+}
+
 footer {
     padding-top: 20px;
     text-align: center;
@@ -83,6 +92,7 @@ footer {
 footer p {
     color:#fff;
 }
+
 
 #loader {
     margin:auto;
