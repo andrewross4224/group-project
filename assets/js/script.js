@@ -31,7 +31,7 @@ var button3 = $('#button3')
 var dialog = $('#dialog')
 // fetch for launch data
 function getLaunches() {
-    var launchUrl = 'https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=100&lsp__name=Spacex'
+    var launchUrl = 'https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=100&lsp__name=Spacex'
     fetch(launchUrl)
         .then(function (response) {
             return response.json();
@@ -43,7 +43,7 @@ function getLaunches() {
 }
 // fetch for past launches
 function previousLaunches() {
-    var previousUrl = 'https://ll.thespacedevs.com/2.2.0/launch/previous/?limit=100&lsp__name=Spacex'
+    var previousUrl = 'https://lldev.thespacedevs.com/2.2.0/launch/previous/?limit=100&lsp__name=Spacex'
     fetch(previousUrl)
         .then(function (response) {
             return response.json();
@@ -55,7 +55,7 @@ function previousLaunches() {
 }
 // fetch for weather forcast
 function getWeather() {
-    var weatherUrl = "https://api.weatherapi.com/v1/forecast.json?key=e0bee2c578604174b22235058230410&q=merritt island&days=14&aqi=no&alerts=no"
+    var weatherUrl = "https://api.weatherapi.com/v1/forecast.json?key=7b6f17cc0bc342308ba200624231810&q=merritt island&days=14&aqi=no&alerts=no"
     fetch(weatherUrl)
         .then(function (response) {
             return response.json();
